@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Product xmlns='http://code.google.com/p/open-zwave/'>
+  <!-- COMMAND_CLASS_SWITCH_MULTILEVEL. This class is in the list reported by the device, but it does not respond to requests -->
+  <!-- <CommandClass id="38" getsupported="false"/> -->
+  <!-- Configuration -->
+  <CommandClass id="112">
+    <Value genre="config" index="1" instance="1" label="Remember relays state" max="2" min="0" size="1" type="list" value="1">
+      <Help>This parameter determines the state of relays power supply failure (e.g. power outage). auto OFF and flashing modes the parameter not relevant and the relay will always remain off.</Help>
+      <Item label="Relays remain switched off after restoring power" value="0"/>
+      <Item label="Restore remembered state of relays after restoring power" value="1"/>
+      <Item label="Restore remembered state of relays after restoring power, but for toggle switches (parameter 20/21 set to 1) set the same state as the current state of the switches" value="2"/>
+    </Value>
+    <Value genre="config" index="150" instance="1" label="First channel - operating mode" max="3" min="0" size="1" type="list" value="0">
+      <Help>This parameter allows to choose operating for channel controlled with Q/Q1 output. timed modes (value 1, 2 or 3), time is set parameter 154 and reaction to input is set with parameter 152.</Help>
+      <Item label="Standard operation" value="0"/>
+      <Item label="Delay Off" value="1"/>
+      <Item label="Auto Off" value="2"/>
+      <Item label="Flashing" value="3"/>
+    </Value>
+    <Value genre="config" index="152" instance="1" label="First channel - reaction to input change in delayed/auto OFF modes" max="2" min="0" size="1" type="list" value="0">
+      <Help>This parameter determines how the device when changing state of S1 input in timed for first channel.</Help>
+      <Item label="Cancel mode and set default state" value="0"/>
+      <Item label="No reaction, mode runs until it ends" value="1"/>
+      <Item label="Reset timer, start counting time from the beginning" value="2"/>
+    </Value>
+    <Value genre="config" index="153" instance="1" label="Second channel - reaction to input change in delayed/auto OFF modes" max="2" min="0" size="1" type="list" value="0">
+      <Help>This parameter determines how the device when changing state of S2 input in timed for second channel.</Help>
+      <Item label="Cancel mode and set default state" value="0"/>
+      <Item label="No reaction, mode runs until it ends" value="1"/>
+      <Item label="Reset timer, start counting time from the beginning" value="2"/>
+    </Value>
+    <Value genre="config" index="154" instance="1" label="First channel – time parameter for delayed/auto OFF and flashing modes" max="32000" min="0" size="2" type="short" value="5">
+      <Help>This parameter allows to set time parameter used in timed modes. (s)</Help>
+    </Value>
+    <Value genre="config" index="155" instance="1" label="Second channel – time parameter for delayed/auto OFF and flashing modes" max="32000" min="0" size="2" type="short" value="5">
+      <Help>This parameter allows to set time parameter used in timed modes. (s)</Help>
+    </Value>
+    <Value genre="config" index="156" instance="1" label="S1 Switch ON value sent to 2nd association group" max="255" min="0" size="2" type="short" value="255">
+      <Help>This parameter determines value sent with Switch On command to devices associated in 2nd association group.</Help>
+    </Value>
+    <Value genre="config" index="157" instance="1" label="S1 Switch OFF value sent to 2nd association group" max="255" min="0" size="2" type="short" value="0">
+      <Help>This parameter determines value sent with Switch Off command to devices associated in 2nd association group.</Help>
+    </Value>
+    <Value genre="config" index="158" instance="1" label="S1 Switch Double Click value sent to 2nd association groups" max="255" min="0" size="2" type="short" value="99">
+      <Help>This parameter determines value sent with Double Click command to devices associated in 2nd  association group.</Help>
+    </Value>
+    <Value genre="config" index="159" instance="1" label="S2 Switch ON value sent to 3rd association group" max="255" min="0" size="2" type="short" value="255">
+      <Help>This parameter determines value sent with Switch On command to devices associated in 3rd association group.</Help>
+    </Value>
+    <Value genre="config" index="160" instance="1" label="S2 Switch OFF value sent to 3rd association group" max="255" min="0" size="2" type="short" value="0">
+      <Help>This parameter determines value sent with Switch Off command to devices associated in 3rd association group.</Help>
+    </Value>
+    <Value genre="config" index="161" instance="1" label="S2 Switch Double Click value sent to 3rd association groups" max="255" min="0" size="2" type="short" value="99">
+      <Help>This parameter determines value sent with Double Click command to devices associated in 3rd  association group.</Help>
+    </Value>
+    <Value genre="config" index="162" instance="1" label="Q/Q1 output type" max="1" min="0" size="1" type="list" value="0">
+      <Help>This parameter determines type of Q/Q1 output.</Help>
+      <Item label="Normally Open (relay contacts opened turned off, closed when turned on)" value="0"/>
+      <Item label="Normally Closed (relay contacts closed turned off, opened when turned on)" value="1"/>
+    </Value>
+    <Value genre="config" index="163" instance="1" label="Q2 output type" max="1" min="0" size="1" type="list" value="0">
+      <Help>This parameter determines type of Q2 output.</Help>
+      <Item label="Normally Open (relay contacts opened turned off, closed when turned on)" value="0"/>
+      <Item label="Normally Closed (relay contacts closed turned off, opened when turned on)" value="1"/>
+    </Value>
+    <Value genre="config" index="164" instance="1" label="Lock simultaneous switching of Q1 and Q2 outputs" max="1" min="0" size="1" type="list" value="0">
+      <Help>When the lock is enabled, both outputs cannot turned on at the same time.</Help>
+      <Item label="Lock disabled" value="0"/>
+      <Item label="Lock enabled" value="1"/>
+    </Value>
+    <Value genre="config" index="20" instance="1" label="S1 input – switch type" max="2" min="0" size="1" type="list" value="2">
+      <Help>S1 - Inputs type configuration</Help>
+      <Item label="Momentary switch" value="0"/>
+      <Item label="Toggle switch (contact closed - On, contact opened - OFF)" value="1"/>
+      <Item label="Toggle switch (device changes status when switch changes status)" value="2"/>
+    </Value>
+    <Value genre="config" index="21" instance="1" label="S2 input – switch type" max="2" min="0" size="1" type="list" value="2">
+      <Help>S2 - Inputs type configuration</Help>
+      <Item label="Momentary switch" value="0"/>
+      <Item label="Toggle switch (contact closed - On, contact opened - OFF)" value="1"/>
+      <Item label="Toggle switch (device changes status when switch changes status)" value="2"/>
+    </Value>
+    <Value genre="config" index="25" instance="1" label="Inputs orientation" max="1" min="0" size="1" type="list" value="0">
+      <Help>This parameter allows reversing operation of S1 and S2 inputs changing the wiring. Use in case of incorrect wiring.</Help>
+      <Item label="default (S1 - 1st channel, S2 - 2nd channel)" value="0"/>
+      <Item label="reversed (S1 - 2nd channel, S2 - 1st channel)" value="1"/>
+    </Value>
+    <Value genre="config" index="26" instance="1" label="Outputs orientation" max="1" min="0" size="1" type="list" value="0">
+      <Help>This parameter allows reversing operation of Q1 and Q2 outputs changing the wiring. Use in case of incorrect wiring.</Help>
+      <Item label="default (Q1 - 1st channel, Q2 - 2nd channel)" value="0"/>
+      <Item label="reversed (Q1 - 2nd channel, Q2 - 1st channel)" value="1"/>
+    </Value>
+  </CommandClass>
+  <!-- -->
+  <CommandClass id="96" mapping="endpoints"/>
+  <!-- Association Groups -->
+  <CommandClass id="133">
+    <Associations num_groups="3">
+      <Group index="1" label="Lifeline" max_associations="1"/>
+      <Group index="2" label="On/Off S1" max_associations="5"/>
+      <Group index="3" label="On/Off S2" max_associations="5"/>
+    </Associations>
+  </CommandClass>
+  <CommandClass id="142" ForceInstances="true"/>
+</Product>
